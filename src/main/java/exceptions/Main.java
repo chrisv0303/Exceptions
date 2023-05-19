@@ -1,6 +1,5 @@
 package exceptions;
 
-import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -8,19 +7,22 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        do{
-            System.out.println("Enter a numerator");
-            int numerator = scanner.nextInt();
-            System.out.println("Enter a denominator");
-            int denominator = scanner.nextInt();
-
-            try{
+        do {
+            try {
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("Enter a numerator:");
+                int numerator = scanner.nextInt();
+                System.out.println("Enter a denominator:");
+                int denominator = scanner.nextInt();
                 System.out.println("Result is: " + numerator / denominator);
                 break;
-            }catch (ArithmeticException exception){
+            } catch (InputMismatchException e){
+                System.out.println("Enter a whole number please!");
+            } catch (ArithmeticException e){
                 System.out.println("Cannot divide by 0. Try again!");
             }
-        }while (true);
+        } while (true);
+
     }
+
 }
